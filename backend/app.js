@@ -9,21 +9,27 @@ import dotenv from "dotenv";
 // app config
 dotenv.config();
 const app = express();
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 const MONGO_URL = process.env.MONGO_URL;
+const FRONTEND_URL = process.env.FRONTEND_URL;
 
 console.log("PORT:", PORT);
-console.log("MONGO_URL:", MONGO_URL);
+console.log("MONGO_URL:", MONGO_URL ? "set" : "missing");
 
 // middlewares
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://remarkable-kitsune-d472dd.netlify.app",
+];
+if (FRONTEND_URL) {
+  allowedOrigins.push(FRONTEND_URL);
+}
+
 const corsOption = {
-  origin: [
-    "http://localhost:5173",
-    "https://remarkable-kitsune-d472dd.netlify.app",
-  ],
+  origin: allowedOrigins,
   credentials: true,
 };
 app.use(cors(corsOption));
