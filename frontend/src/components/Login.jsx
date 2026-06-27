@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { useGlobalContext } from "./globalContext";
+import ThemeToggle from "./ThemeToggle";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -43,24 +44,26 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-[#0c0a1a] via-[#05040a] to-[#0d091e] relative overflow-hidden">
-      {/* Decorative blurred glow circles */}
-      <div className="absolute top-1/4 left-1/4 w-72 h-72 rounded-full bg-indigo-600/10 blur-[100px] pointer-events-none"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-purple-600/10 blur-[100px] pointer-events-none"></div>
+    <div className="auth-page min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
+      <div className="absolute top-6 right-6 z-20">
+        <ThemeToggle />
+      </div>
+      <div className="auth-glow auth-glow-1 pointer-events-none"></div>
+      <div className="auth-glow auth-glow-2 pointer-events-none"></div>
 
-      <div className="glass-panel max-w-md w-full rounded-3xl p-8 md:p-10 space-y-8 flex flex-col justify-center items-center relative z-10 border border-white/5 shadow-2xl">
+      <div className="glass-panel max-w-md w-full rounded-3xl p-8 md:p-10 space-y-8 flex flex-col justify-center items-center relative z-10 shadow-2xl">
         <div className="text-center space-y-2">
-          <h2 className="text-4xl font-extrabold tracking-tight text-white bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
+          <h2 className="text-4xl font-extrabold tracking-tight theme-heading bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
             Welcome Back
           </h2>
-          <p className="text-gray-400 text-sm">
+          <p className="theme-subtext text-sm">
             Sign in to manage your personal finance tracker
           </p>
         </div>
 
         <form onSubmit={onSubmitHandler} className="space-y-6 w-full">
           <div className="space-y-1">
-            <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider" htmlFor="username">
+            <label className="text-xs font-semibold theme-label uppercase tracking-wider" htmlFor="username">
               Username
             </label>
             <input
@@ -76,10 +79,10 @@ const Login = () => {
 
           <div className="space-y-1">
             <div className="flex justify-between items-center">
-              <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider" htmlFor="password">
+              <label className="text-xs font-semibold theme-label uppercase tracking-wider" htmlFor="password">
                 Password
               </label>
-              <a className="text-xs text-indigo-400 hover:text-indigo-300 hover:underline transition" href="#">
+              <a className="text-xs theme-link hover:underline transition" href="#">
                 Forgot password?
               </a>
             </div>
@@ -102,9 +105,9 @@ const Login = () => {
           </button>
         </form>
 
-        <div className="text-center text-sm text-gray-400">
+        <div className="text-center text-sm theme-subtext">
           Don't have an account?{" "}
-          <Link to="/signup" className="text-indigo-400 hover:text-indigo-300 hover:underline font-medium transition">
+          <Link to="/signup" className="theme-link hover:underline font-medium transition">
             Sign up
           </Link>
         </div>

@@ -4,6 +4,7 @@ import Income from "./components/Income";
 import Expenses from "./components/Expenses";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
+import Landing from "./components/Landing";
 import DashboardLayout from "./components/DashboardLayout";
 import { useGlobalContext } from "./components/globalContext";
 
@@ -12,10 +13,8 @@ function App() {
 
   return (
     <Routes>
-      {/* Root redirect depending on auth */}
-      <Route path="/" element={user ? <Navigate to="/dashboard" replace /> : <Navigate to="/login" replace />} />
-      
-      {/* Auth screens */}
+      {/* Landing & auth */}
+      <Route path="/" element={user ? <Navigate to="/dashboard" replace /> : <Landing />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/login" element={<Login />} />
       
