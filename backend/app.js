@@ -23,6 +23,7 @@ app.use(cookieParser());
 const allowedOrigins = [
   "http://localhost:5173",
   "https://remarkable-kitsune-d472dd.netlify.app",
+  "https://moonlit-begonia-d27acd.netlify.app",
 ];
 if (FRONTEND_URL) {
   allowedOrigins.push(FRONTEND_URL);
