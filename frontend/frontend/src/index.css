@@ -1,0 +1,178 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --bg-dark-start: #0a0813;
+  --bg-dark-end: #030206;
+  --glass-bg: rgba(13, 11, 22, 0.45);
+  --glass-border: rgba(255, 255, 255, 0.05);
+  --glass-border-focus: rgba(99, 102, 241, 0.4);
+  --color-green: #10b981;
+  --color-accent: #6366f1;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-dark-end);
+  color: #f3f4f6;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Background floating radial gradient meshes */
+body::before, body::after {
+  content: '';
+  position: fixed;
+  width: 50vw;
+  height: 50vw;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(140px);
+  opacity: 0.15;
+  animation: float 25s infinite alternate ease-in-out;
+}
+
+body::before {
+  background: radial-gradient(circle, #6366f1 0%, transparent 80%);
+  top: -10%;
+  left: -10%;
+  animation-duration: 20s;
+}
+
+body::after {
+  background: radial-gradient(circle, #ec4899 0%, transparent 80%);
+  bottom: -10%;
+  right: -10%;
+  animation-duration: 28s;
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(5%, 8%) scale(1.1);
+  }
+  100% {
+    transform: translate(-3%, -5%) scale(0.95);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.4);
+}
+
+/* Glassmorphism panel base */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel:hover {
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* Form controls focus states */
+.custom-input {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  color: #f3f4f6;
+  padding: 0.75rem 1rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.custom-input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--glass-border-focus);
+  box-shadow: 0 0 12px rgba(99, 102, 241, 0.15);
+}
+
+/* Animations for entries */
+@keyframes slideInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Custom styles for React Datepicker to match dark glass theme */
+.react-datepicker {
+  background-color: #110e1a !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  font-family: var(--font-sans) !important;
+  color: #f3f4f6 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5) !important;
+}
+
+.react-datepicker__header {
+  background-color: #171424 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.react-datepicker__current-month, 
+.react-datepicker__day-name, 
+.react-datepicker-time__header {
+  color: #e5e7eb !important;
+}
+
+.react-datepicker__day {
+  color: #cbd5e1 !important;
+}
+
+.react-datepicker__day:hover {
+  background-color: rgba(99, 102, 241, 0.3) !important;
+  color: #fff !important;
+}
+
+.react-datepicker__day--selected {
+  background-color: #6366f1 !important;
+  color: #white !important;
+  border-radius: 50% !important;
+}
+
+.react-datepicker__day--keyboard-selected {
+  background-color: rgba(99, 102, 241, 0.2) !important;
+}
