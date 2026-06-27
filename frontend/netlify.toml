@@ -4,14 +4,14 @@
 
 # Proxy API requests to Render (same-origin for cookies in production)
 [[redirects]]
-  from = "/api/*"
-  to = "https://YOUR-BACKEND-NAME.onrender.com/api/:splat"
+  from = "/api/v1/user/*"
+  to = "https://personal-finance-tracker-2-mx43.onrender.com/api/v1/user/:splat"
   status = 200
   force = true
 
 [[redirects]]
   from = "/transaction/*"
-  to = "https://YOUR-BACKEND-NAME.onrender.com/transaction/:splat"
+  to = "https://personal-finance-tracker-2-mx43.onrender.com/transaction/:splat"
   status = 200
   force = true
 
